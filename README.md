@@ -53,5 +53,14 @@ export class CreateMovieDto extends PickType(MovieEntity, ['title']) {}
 - express 방식으로 사용 할수 있고 메서드나 속성에 접근할 수도 있으나
 - 될수있으면 안하는게 좋다 왜냐하면 nestjs 는 2개의 프레임워크 라이브러리와 함께 작동하기 때문이다(express fastify)
 - 이 두가지 요소를 아무 문제 없이 전환하려면 네스트 방식으로 작성하는것이 가장 좋다.
+- 테스트 할때는 본 어플과 환경이 같아야 한다 예(파이프 연결)
+
+```
+app.useGlobalPipes(
+      new ValidationPipe({
+        transform: true,
+        forbidNonWhitelisted: true,
+      }),
+```
 
 ## 테스트코드는 노가다 성인것 같다. 하지만 테스트로 보장 된다는 점에서 좋다.

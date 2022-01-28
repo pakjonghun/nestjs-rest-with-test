@@ -24,6 +24,7 @@ export class MoviesService {
     return newData;
   }
   searchById(id: number): MovieEntity[] {
+    console.log(typeof id);
     const result = this.movie.filter((i) => i.id === id);
     if (!result.length) throw new NotFoundException();
     return result;
@@ -37,7 +38,6 @@ export class MoviesService {
   }
 
   delete(id: number) {
-    console.log(id);
     const [target] = this.searchById(id);
     this.movie = this.movie.filter((i) => i.id !== id);
     return target;
